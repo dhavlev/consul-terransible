@@ -17,10 +17,6 @@ module "network" {
   web_instance_type = "${var.web_instance_type}"
   web_security_group = "${module.network.web_security_group}"
 
-  db_instance_type = "${var.db_instance_type}"
-  db_security_group = "${module.network.db_security_group}"
-
   web_subnet_a = "${module.network.web_subnet_a}"
   web_subnet_b = "${module.network.web_subnet_b}"
-  db_subnet = "${module.network.db_subnet}"
 }*/
