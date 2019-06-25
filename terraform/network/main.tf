@@ -36,7 +36,17 @@ resource "aws_route_table" "consul_rt_public" {
   }
 }
 
+resource "aws_route_table" "consul_rt_private" {
+  vpc_id = "${aws_vpc.consul_vpc.id}" 
+
+  tags{
+      Name = "consul_rt_private"
+      Project = "consul"
+  }
+}
+
 #-------------- Subnets --------------#
+## Public
 resource "aws_subnet" "consul_sub_public_a" {
   vpc_id = "${aws_vpc.consul_vpc.id}"
   availability_zone = "${data.aws_availability_zones.data_az.names[0]}"
@@ -73,7 +83,45 @@ resource "aws_subnet" "consul_sub_public_c" {
   }
 }
 
+## Private
+resource "aws_subnet" "consul_sub_private_a" {
+  vpc_id = "${aws_vpc.consul_vpc.id}"
+  availability_zone = "${data.aws_availability_zones.data_az.names[0]}"
+  cidr_block = "192.168.3.0/24"
+  map_public_ip_on_launch = true
+  
+  tags{
+      Name = "consul_sub_private_a"
+      Project = "consul"
+  }
+}
+
+resource "aws_subnet" "consul_sub_private_b" {
+  vpc_id = "${aws_vpc.consul_vpc.id}"
+  availability_zone = "${data.aws_availability_zones.data_az.names[1]}"
+  cidr_block = "192.168.4.0/24"
+  map_public_ip_on_launch = true
+  
+  tags{
+      Name = "consul_sub_private_b"
+      Project = "consul"
+  }
+}
+
+resource "aws_subnet" "consul_sub_private_c" {
+  vpc_id = "${aws_vpc.consul_vpc.id}"
+  availability_zone = "${data.aws_availability_zones.data_az.names[2]}"
+  cidr_block = "192.168.5.0/24"
+  map_public_ip_on_launch = true
+  
+  tags{
+      Name = "consul_sub_private_c"
+      Project = "consul"
+  }
+}
+
 #-------------- Route Subnet Association --------------#
+## Public
 resource "aws_route_table_association" "consul_rta_public_a" {
   route_table_id = "${aws_route_table.consul_rt_public.id}"
   subnet_id = "${aws_subnet.consul_sub_public_a.id}"
@@ -89,6 +137,22 @@ resource "aws_route_table_association" "consul_rta_public_c" {
   subnet_id = "${aws_subnet.consul_sub_public_c.id}"
 }
 
+## Private
+resource "aws_route_table_association" "consul_rta_private_a" {
+  route_table_id = "${aws_route_table.consul_rt_private.id}"
+  subnet_id = "${aws_subnet.consul_sub_private_a.id}"
+}
+
+resource "aws_route_table_association" "consul_rta_private_b" {
+  route_table_id = "${aws_route_table.consul_rt_private.id}"
+  subnet_id = "${aws_subnet.consul_sub_private_b.id}"
+}
+
+resource "aws_route_table_association" "consul_rta_private_c" {
+  route_table_id = "${aws_route_table.consul_rt_private.id}"
+  subnet_id = "${aws_subnet.consul_sub_private_c.id}"
+}
+
 #-------------- Security Groups --------------#
 
 resource "aws_security_group" "consul_sg_client" {
@@ -97,7 +161,7 @@ resource "aws_security_group" "consul_sg_client" {
   vpc_id = "${aws_vpc.consul_vpc.id}"
 
   tags{
-      Name = "consul_sg_public"
+      Name = "consul_sg_client"
       Project = "consul"
   }
 
@@ -147,7 +211,7 @@ resource "aws_security_group" "consul_sg_server" {
   vpc_id = "${aws_vpc.consul_vpc.id}"
 
   tags{
-      Name = "consul_sg_public"
+      Name = "consul_sg_server"
       Project = "consul"
   }
 
