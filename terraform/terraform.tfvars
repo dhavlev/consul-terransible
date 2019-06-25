@@ -1,4 +1,4 @@
-ami                 = "ami-036ede09922dadc9b"
+ami                 = "ami-07b4156579ea1d7ba"
 key_name            = "consul"
 public_key_path     = "/home/cloud_user/.ssh/consul.pub"
 instance_type       = "t2.micro"
