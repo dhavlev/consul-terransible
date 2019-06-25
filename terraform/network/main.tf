@@ -156,7 +156,7 @@ resource "aws_route_table_association" "consul_rta_private_c" {
 #-------------- Security Groups --------------#
 
 resource "aws_security_group" "consul_sg_client" {
-  name = "web_access"
+  name = "consul_sg_client"
   description = "default access to instances over 22, 8301, 8500, 8600"
   vpc_id = "${aws_vpc.consul_vpc.id}"
 
@@ -206,7 +206,7 @@ resource "aws_security_group" "consul_sg_client" {
 }
 
 resource "aws_security_group" "consul_sg_server" {
-  name = "web_access"
+  name = "consul_sg_server"
   description = "default access to instances over 22, 8301, 8300, 8600"
   vpc_id = "${aws_vpc.consul_vpc.id}"
 
