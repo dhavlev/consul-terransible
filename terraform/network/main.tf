@@ -91,9 +91,9 @@ resource "aws_route_table_association" "consul_rta_public_c" {
 
 #-------------- Security Groups --------------#
 
-resource "aws_security_group" "consul_sg_public" {
+resource "aws_security_group" "consul_sg_client" {
   name = "web_access"
-  description = "default access to instances over 80 and 22"
+  description = "default access to instances over 22, 8301, 8500, 8600"
   vpc_id = "${aws_vpc.consul_vpc.id}"
 
   tags{
@@ -109,10 +109,76 @@ resource "aws_security_group" "consul_sg_public" {
       cidr_blocks = ["0.0.0.0/0"]
   }
 
+  #dns
+  ingress{
+      from_port = 8600
+      to_port = 8600
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
   #http
   ingress{
-      from_port = 80
-      to_port = 80
+      from_port = 8500
+      to_port = 8500
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  #dns
+  ingress{
+      from_port = 8301
+      to_port = 8301
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress{
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "consul_sg_server" {
+  name = "web_access"
+  description = "default access to instances over 22, 8301, 8300, 8600"
+  vpc_id = "${aws_vpc.consul_vpc.id}"
+
+  tags{
+      Name = "consul_sg_public"
+      Project = "consul"
+  }
+
+  #ssh
+  ingress{
+      from_port = 22
+      to_port = 22
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  #dns
+  ingress{
+      from_port = 8600
+      to_port = 8600
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  #lan serf
+  ingress{
+      from_port = 8301
+      to_port = 8301
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  #server rpc
+  ingress{
+      from_port = 8300
+      to_port = 8300
       protocol = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
   }
