@@ -22,7 +22,7 @@ resource "aws_instance" "consul_instance_server_a" {
   tags{
     Name = "consul_instance_server_a"
     Project = "consul"
-    Type: "server"
+    Type = "server"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_instance" "consul_instance_server_b" {
   tags{
     Name = "consul_instance_server_b"
     Project = "consul"
-    Type: "server"
+    Type = "server"
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_instance" "consul_instance_server_c" {
   tags{
     Name = "consul_instance_server_c"
     Project = "consul"
-    Type: "server"
+    Type = "server"
   }
 }
 
@@ -67,6 +67,6 @@ resource "aws_instance" "consul_instance_client_a" {
   tags{
     Name = "consul_instance_client_a"
     Project = "consul"
-    Type: "client"
+    Type = "client"
   }
 }
