@@ -7,7 +7,7 @@ module "network" {
   source = "./network"
 }
 
-/*module "compute" {
+module "compute" {
   source = "./compute"
   ami = "${var.ami}"
   key_name = "${var.key_name}"
@@ -18,10 +18,10 @@ module "network" {
   server_security_group = "${module.network.server_security_group}"
   client_security_group = "${module.network.client_security_group}"
 
-  public_subnet_a = "${module.network.public_subnet_a}
-  public_subnet_b = "${module.network.public_subnet_b}
-  public_subnet_c = "${module.network.public_subnet_c}
-  private_subnet_a = "${module.network.private_subnet_a}
-  private_subnet_b = "${module.network.private_subnet_b}
-  private_subnet_c = "${module.network.private_subnet_c}
-}*/
+  public_subnet_a = "${module.network.public_subnet_a}"
+  public_subnet_b = "${module.network.public_subnet_b}"
+  public_subnet_c = "${module.network.public_subnet_c}"
+  private_subnet_a = "${module.network.private_subnet_a}"
+  private_subnet_b = "${module.network.private_subnet_b}"
+  private_subnet_c = "${module.network.private_subnet_c}"
+}
