@@ -15,7 +15,10 @@ resource "aws_vpc" "consul_vpc" {
 #-------------- Internet Gateway --------------#
 resource "aws_internet_gateway" "consul_igw" {
   vpc_id ="${aws_vpc.consul_vpc.id}"
-  
+  route{
+      cidr_block = "0.0.0.0/0"
+      gateway_id = "${aws_internet_gateway.consul_igw.id}"
+  }  
   tags{
       Name = "consul"
       Project = "consul"
