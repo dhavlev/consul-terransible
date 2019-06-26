@@ -10,6 +10,10 @@ output "client_security_group" {
   value = "${aws_security_group.consul_sg_client.id}"
 }
 
+output "elb_security_group" {
+  value = "${aws_security_group.elb_sg_client.id}"
+}
+
 output "public_subnet_a" {
   value = "${aws_subnet.consul_sub_public_a.id}"
 }

@@ -1,0 +1,11 @@
+---
+
+- name: apt update and upgrade
+  shell: apt-get -y update && apt-get -y upgrade && apt-get -f install
+
+- name: install apt packages
+  apt:
+    name: "{{ apt_packages }}"
+    state: present
+
+  

@@ -1,0 +1,30 @@
+---
+
+- name: download consul
+  get_url:
+    url: "https://releases.hashicorp.com/consul/1.5.1/consul_1.5.1_linux_amd64.zip"
+    dest: "~/consul.zip"
+    
+
+- name: unzip consul
+  unarchive:
+    src: "~/consul.zip"
+    dest: "/bin"
+    remote_src: yes
+
+- name: create directory /var/consul
+  file:
+    path: "/var/consul"
+    state: directory
+
+- name: create directory /etc/consul.d
+  file:
+    path: "/etc/consul.d"
+    state: directory
+
+- name: render template and copy
+  tempfile: 
+    src: config.json.j2
+    dest: /etc/consul.d/config.json
+
+#- name: create upstart

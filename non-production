@@ -1,0 +1,10 @@
+[consul-servers]
+consul-server-bootstrap ansible_host=x.x.x.x
+consul-server-1 ansible_host=y.y.y.y
+
+[consul-clients]
+consul-client-1 ansible_host=z.z.z.z
+
+[consul:children]
+consul-servers
+consul-clients
