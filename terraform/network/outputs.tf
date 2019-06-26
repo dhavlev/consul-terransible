@@ -23,11 +23,11 @@ output "public_subnet_c" {
 }
 
 output "private_subnet_a" {
-  value = "${aws_subnet.consul_sub_private_c.id}"
+  value = "${aws_subnet.consul_sub_private_a.id}"
 }
 
 output "private_subnet_b" {
-  value = "${aws_subnet.consul_sub_private_c.id}"
+  value = "${aws_subnet.consul_sub_private_b.id}"
 }
 
 output "private_subnet_c" {
