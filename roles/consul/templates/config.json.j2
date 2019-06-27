@@ -5,7 +5,7 @@
     "bootstrap": true,
     {% else %}
     "bootstrap": false,
-    "retry_join": ["provider=aws tag_key=Project tag_value=consul"],
+    "retry_join": ["provider=aws tag_key=Project tag_value=consul access_key_id={{ access_key_id }} secret_access_key={{ secret_access_key }}"],
     {% endif %}
     
     {% if server is defined and server == true %}
