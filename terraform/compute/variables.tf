@@ -10,4 +10,5 @@ variable "public_subnet_c" {}
 variable "private_subnet_a" {}
 variable "private_subnet_b" {}
 variable "private_subnet_c" {}
+variable "elb_security_group" {}
 variable "aws_profile" {}
