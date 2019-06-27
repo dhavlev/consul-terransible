@@ -259,8 +259,8 @@ resource "aws_security_group" "consul_sg_server" {
   }
 }
 
-resource "aws_security_group" "elb_sg" {
-  name = "consul_sg_server"
+resource "aws_security_group" "consul_sg_elb" {
+  name = "consul_sg_elb"
   description = "default access to instances over 80"
   vpc_id = "${aws_vpc.consul_vpc.id}"
 

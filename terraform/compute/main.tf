@@ -95,10 +95,11 @@ cat <<EOF > ../aws_hosts
 [consul-servers]
 consul-server-bootstrap ansible_host=${aws_instance.consul_instance_server_a.public_ip}
 consul-server-1 ansible_host=${aws_instance.consul_instance_server_b.public_ip}
-consul-server-1 ansible_host=${aws_instance.consul_instance_server_c.public_ip}
+consul-server-2 ansible_host=${aws_instance.consul_instance_server_c.public_ip}
 
 [consul-clients]
 consul-client-1 ansible_host=${aws_instance.consul_instance_client_a.public_ip}
+consul-client-2 ansible_host=${aws_instance.consul_instance_client_b.public_ip}
 
 [consul:children]
 consul-servers
@@ -125,7 +126,7 @@ EOD
     healthy_threshold   = "2"
     unhealthy_threshold = "3"
     timeout             = "3"
-    target              = "TCP:80"
+    target              = "TCP:8500"
     interval            = "30"
   }
 

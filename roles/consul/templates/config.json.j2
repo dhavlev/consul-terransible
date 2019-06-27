@@ -1,33 +1,25 @@
 {
+    #jinja2: lstrip_blocks: “True”
+    
+    {% if bootstrap is defined and bootstrap == true %}
     "bootstrap": true,
-    "server": true,
-    "datacenter": "{{ datacenter }}",
-    "data_dir": "/var/consul",
-    "encrypt": "{{ encrypt }}",
-    "log_level": "INFO",
-    "enable_syslog": true
-}
-
-{
-    {% if bootstrap is defined and bootstrap == true %}}
-    "bootstrap": true,
-    {% else %}}
+    {% else %}
     "bootstrap": false,
     "retry_join": ["provider=aws tag_key=Project tag_value=consul"],
-    {% endif %}}
+    {% endif %}
     
-    {% if server is defined and server == true %}}
+    {% if server is defined and server == true %}
     "server": true,
-    {% else %}}
+    {% else %}
     "server": false,
-    {% endif %}}
+    {% endif %}
     
-    {% if client is defined and client == true %}}
+    {% if client is defined and client == true %}
     "client": true,
-    {% endif %}}
+    {% endif %}
 
     "datacenter": "{{ datacenter }}",
-    "data_dir": "/var/consul",    
+    "data_dir": "/var/consul",
     "encrypt": "{{ encrypt }}",
     "log_level": "INFO",
     "enable_syslog": true

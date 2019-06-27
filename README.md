@@ -35,3 +35,11 @@ terraform destroy ----auto-approve
 ```
 ansible-playbook -i non-production master-install-consul.yaml
 ```
+
+## Troubleshoot
+### Ansible
+1. ansible the authenticity of host can't be established  
+   Open /etc/ansible/ansible.cfg and set 'host_key_checking' to false
+2. Problem while identing the config.json  
+   refer to [link](https://ansiblemaster.wordpress.com/2016/07/29/jinja2-lstrip_blocks-to-manage-indentation/)
+

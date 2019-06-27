@@ -4,7 +4,6 @@
   get_url:
     url: "https://releases.hashicorp.com/consul/1.5.1/consul_1.5.1_linux_amd64.zip"
     dest: "~/consul.zip"
-    
 
 - name: unzip consul
   unarchive:
@@ -23,8 +22,9 @@
     state: directory
 
 - name: render template and copy
-  tempfile: 
+  template:
     src: config.json.j2
     dest: /etc/consul.d/config.json
 
-#- name: create upstart
+- name: start consul
+  shell: consul agent -config-dir /etc/consul.d/config.json
