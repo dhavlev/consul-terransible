@@ -1,0 +1,17 @@
+[Unit]
+Description=run consul server or client
+After=auditd.service systemd-user-sessions.service time-sync.target
+ 
+[Service]
+User=root
+TimeoutStartSec=0
+Type=simple
+KillMode=process
+WorkingDirectory=/bin
+ExecStart=/bin/consul agent -config-dir /etc/consul.d/config.json
+Restart=always
+RestartSec=2
+LimitNOFILE=5555
+ 
+[Install]
+WantedBy=multi-user.target

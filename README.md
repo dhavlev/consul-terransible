@@ -32,8 +32,14 @@ terraform destroy ----auto-approve
 ```
 
 ## How to Execute Ansible Playbook independent of Terraform
+### Setup
 ```
-ansible-playbook -i non-production master-install-consul.yaml
+ansible-playbook -i non-production master-install-consul.yaml --tags "setup"
+```
+
+### Maintenance
+```
+ansible-playbook -i non-production master-install-consul.yaml --tags "consul-start" | "consul-stop" | "consul-status"
 ```
 
 ## Troubleshoot

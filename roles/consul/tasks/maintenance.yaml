@@ -1,0 +1,22 @@
+---
+
+- name: consul maintenance - start
+  service:
+    name: consul
+    state: started
+  tags:
+    - consul-start
+
+- name: consul maintenance - stop
+  service:
+    name: consul
+    state: started
+  tags:
+    - consul-stop
+
+- name: consul maintenance - status
+  service:
+    name: consul
+    state: started
+  tags:
+    - consul-status
