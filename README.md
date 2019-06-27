@@ -2,7 +2,7 @@
 This reposiory will help you setup [Consul](https://www.consul.io/) Cluster (2 clients and 3 Servers) using Terraform and Ansible.
 
 ## Diagrams - Infra
-
+![consul-infra.png](consul-infra.png)
 
 ## How to setup Consul Cluster using Terrform and Ansible Scripts
 ### Preparing master machine
