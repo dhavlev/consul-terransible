@@ -11,7 +11,7 @@ output "client_security_group" {
 }
 
 output "elb_security_group" {
-  value = "${aws_security_group.elb_sg_client.id}"
+  value = "${aws_security_group.elb_sg.id}"
 }
 
 output "public_subnet_a" {
