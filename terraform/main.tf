@@ -17,6 +17,7 @@ module "compute" {
   instance_type = "${var.instance_type}"
   server_security_group = "${module.network.server_security_group}"
   client_security_group = "${module.network.client_security_group}"
+  elb_security_group = "${module.network.elb_security_group}"
 
   public_subnet_a = "${module.network.public_subnet_a}"
   public_subnet_b = "${module.network.public_subnet_b}"
