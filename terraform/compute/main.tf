@@ -108,7 +108,7 @@ EOF
 EOD
   }
   provisioner "local-exec" {
-    command = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.consul_instance_server_a.id} ${aws_instance.consul_instance_server_b.id} ${aws_instance.consul_instance_server_c.id} ${aws_instance.consul_instance_client_a.id} ${aws_instance.consul_instance_client_b.id} && cd .. && ansible-playbook -i aws_hosts master-install-consul.yaml"
+    command = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.consul_instance_server_a.id} ${aws_instance.consul_instance_server_b.id} ${aws_instance.consul_instance_server_c.id} ${aws_instance.consul_instance_client_a.id} ${aws_instance.consul_instance_client_b.id} --profile ${var.aws_profile} && cd .. && ansible-playbook -i aws_hosts master-install-consul.yaml"
   }
   name = "consul-elb"
   subnets = ["${var.public_subnet_a}", "${var.public_subnet_b}"]
