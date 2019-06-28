@@ -14,10 +14,10 @@ chmod 777 client-setup-script.sh
 ```
 
 ### Screenshots
-![images/consul-01.png](images/consul-01.png)
-![images/consul-02.png](images/consul-02.png)
-![images/consul-03.png](images/consul-03.png)
-![images/consul-05.png](images/consul-05.png)
+![images/consul-01.PNG](images/consul-01.PNG)
+![images/consul-02.PNG](images/consul-02.PNG)
+![images/consul-03.PNG](images/consul-03.PNG)
+![images/consul-05.PNG](images/consul-05.PNG)
 
 ### Initialise and Plan
 ```
