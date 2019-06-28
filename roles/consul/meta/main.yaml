@@ -1,4 +1,4 @@
 ---
 
 dependencies:
-  - { role: apt }
+  - { role: apt , tags: ["setup"] }

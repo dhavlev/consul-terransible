@@ -116,7 +116,7 @@ EOD
   security_groups = ["${var.elb_security_group}"]
 
   listener {
-    instance_port     = 80
+    instance_port     = 8500
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
