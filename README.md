@@ -49,3 +49,13 @@ ansible-playbook -i non-production master-install-consul.yaml --tags "consul-sta
 2. Problem while identing the config.json  
    refer to [link](https://ansiblemaster.wordpress.com/2016/07/29/jinja2-lstrip_blocks-to-manage-indentation/)
 
+## Important Note
+1. This infrastructure is deployed from a controller machine which is outside the Consul Infra and does not have access to private IPs.
+2. You will see Public IPs are enabled though Instances are deployed in Private Subnet.
+3. Please amend scripts to suit your requirements.
+
+## Want to Secure Infra
+1. Remove route to internet from route - "consul_rt_private"
+2. Remove "map_public_ip_on_launch" from "consul_sub_private_a",  consul_sub_private_b", "consul_sub_private_c"
+3. Map private ips in ansible inventoty "aws_hosts"
+
