@@ -13,6 +13,12 @@ chmod 777 client-setup-script.sh
 ./client-setup-script.sh
 ```
 
+### Screenshots
+![images/consul-01.png](images/consul-01.png)
+![images/consul-02.png](images/consul-02.png)
+![images/consul-03.png](images/consul-03.png)
+![images/consul-05.png](images/consul-05.png)
+
 ### Initialise and Plan
 ```
 git clone https://github.com/dhavlev/consul-terransible.git
