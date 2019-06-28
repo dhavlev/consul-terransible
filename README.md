@@ -29,12 +29,12 @@ terraform plan
 
 ### Apply
 ```
-terraform apply ----auto-approve
+terraform apply --auto-approve
 ```
 
 ### Destroy
 ```
-terraform destroy ----auto-approve
+terraform destroy --auto-approve
 ```
 
 ## How to Execute Ansible Playbook independent of Terraform
